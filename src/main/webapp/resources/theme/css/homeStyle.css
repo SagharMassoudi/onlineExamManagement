@@ -1,0 +1,35 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Fredoka One', cursive;
+}
+
+body {
+    text-align: center;
+    height: 100%;
+    background-image: url("img/lightBlue.jpg") !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+form {
+    border-radius: 10px;
+    border: 3px solid #145DA0;
+    padding: 25px;
+    height: 140px;
+    width: 240px;
+    margin: auto !important;
+    justify-content: center;
+}
+
+button {
+    border-radius: 8px !important;
+    width: 100%;
+    background-color: #145DA0 !important;
+    color: white;
+    opacity: 100%;
+}
+
+button:hover {
+    opacity: 0.9;
+}
