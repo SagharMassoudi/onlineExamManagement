@@ -1,29 +1,27 @@
 * {
     box-sizing: border-box;
-    font-family: 'Fredoka One', cursive;
-}
+    font-family: 'Nanum Myeongjo', serif;}
 
 body {
-    text-align: center;
-    background-color: #221749;
+    background-color: #DBE3E7;
 }
 
 .myForm {
-    border-radius: 10px;
-    border: medium solid #4CDBF4;
+    border-radius: 8px;
+    border: medium solid #579FB9;
     padding: 25px;
     margin: auto;
     align-self: center;
     height: 500px;
-    width: 380px;
+    width: 400px;
 }
 
 button {
     border-radius: 8px;
-    padding: 10px;
+    padding: 6px;
     width: 100%;
-    background-color: #D45AD0;
-    color: #4CDBF4;
+    background-color: #579FB9;
+    color: white;
     opacity: 1;
 }
 
@@ -31,13 +29,16 @@ button:hover {
     opacity: 0.9;
 }
 
-h2 {
+h1 {
+    font-size:40px ;
     text-align: center;
-    color: #4CDBF4;
+    color: #579FB9;
+    text-shadow: 1px 1px black;
 }
 
 label {
-    color: #4CDBF4;
+    text-align: left !important;
+    color: #579FB9;
 }
 
 .inputContainer {
@@ -46,7 +47,7 @@ label {
     outline: none;
     display: flex;
     margin-bottom: 15px;
-    opacity: 0.4;
+    opacity: 0.7;
 
 }
 

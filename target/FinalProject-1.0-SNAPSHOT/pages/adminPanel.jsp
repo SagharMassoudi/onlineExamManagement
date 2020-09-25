@@ -2,16 +2,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/adminPanelStyle.css'/>">
     <title>Admin Panel</title>
 </head>
 <body>
-<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>ADMIN<span> PANEL</span></h1>
-</div>
+<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>Admin Panel</h1>
+</div><br><br><br>
 <form>
     <h3>${message}</h3>
     <input type="hidden" name="emailAddress" id="emailAddress" value="${emailAddress}">

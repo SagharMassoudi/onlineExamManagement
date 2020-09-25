@@ -1,19 +1,19 @@
 * {
     box-sizing: border-box;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nanum Myeongjo', serif;
 }
 
 body {
     text-align: center;
-    background-color: #221749 !important;
+    background-color: #DBE3E7 !important;
 }
 
 button {
     border-radius: 8px;
     padding: 10px;
     width: 95px;
-    background-color: #D45AD0 !important;
-    color: #4CDBF4 !important;
+    background-color: #579FB9 !important;
+    color: white !important;
     opacity: 1;
 }
 
@@ -23,28 +23,9 @@ button:hover {
 
 h1 {
     text-align: center;
-    color: #4CDBF4 !important;
+    font-size: 50px;
+    color: #28515f !important;
     animation: neonBlue .08s ease-in-out infinite alternate !important;
-}
-
-
-@keyframes neonBlue {
-    from {
-        text-shadow: 0 0 6px rgba(180, 216, 199, 0.92),
-        0 0 30px rgba(180, 216, 199, 0.30),
-        0 0 12px rgba(30, 190, 242, 0.52),
-        0 0 21px rgba(30, 190, 242, 0.80),
-        0 0 34px rgba(30, 190, 242, 0.78),
-        0 0 54px rgba(30, 190, 242, 0.90);
-    }
-    to {
-        text-shadow: 0 0 6px rgba(180, 216, 199, 0.98),
-        0 0 30px rgba(180, 216, 199, 0.38),
-        0 0 12px rgba(30, 190, 242, 0.58),
-        0 0 22px rgba(30, 190, 242, 0.60),
-        0 0 38px rgba(30, 190, 242, 0.88),
-        0 0 60px rgba(30, 190, 242, 1);
-    }
 }
 
 .inputContainer {
@@ -54,20 +35,20 @@ h1 {
     display: flex;
     margin-bottom: 15px;
     border: none;
-    background-color: #221749;
-    color: #4CDBF4;
+    background-color: #DBE3E7;
+    color: #579FB9;
 }
 
 table, th, td {
-    border: 5px solid #4CDBF4 !important;
+    border: medium solid #579FB9 !important;
 }
 
 th {
-    color: #2571BD !important;
+    color: #28515f !important;
     text-align: center;
 }
 
 td {
-    color: #4CDBF4 !important;
+    color: #579FB9 !important;
     text-align: left;
 }

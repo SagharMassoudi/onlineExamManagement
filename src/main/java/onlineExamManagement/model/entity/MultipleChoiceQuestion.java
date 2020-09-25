@@ -22,4 +22,6 @@ public class MultipleChoiceQuestion extends Question {
     public void setAnswers(List<Answer> answers) {
         this.answers = answers;
     }
+
+
 }

@@ -3,7 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/questionBankStyle.css'/>">
@@ -11,8 +12,8 @@
 </head>
 <body>
 <div class="jumbotron text-center jumbotron-fluid"
-     style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>QUESTION BANK</h1>
+     style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>Question Bank</h1>
 </div>
 
 <table align="center">
@@ -34,7 +35,9 @@
                 <td>${question.questionContent}</td>
                 <td><input class="inputContainer" name="point" id="point" placeholder="point" required/>
                 </td>
-                <td><form:button type="submit">Add To Exam</form:button></td>
+                <td><form:button type="submit" title="Add Question To Exam">
+                    <i class="material-icons" style="font-size: 15px">add</i>
+                </form:button></td>
             </form:form>
         </tr>
     </c:forEach>

@@ -1,7 +1,11 @@
 package onlineExamManagement.model.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
@@ -10,14 +14,17 @@ public class Student extends User{
         super();
     }
 
-    @OneToMany(mappedBy = "student")
-    List<StudentScore> scores;
+    @ElementCollection
+    @MapKeyJoinColumn(name = "exam_id")
+    @Column(name = "studentScore")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Map<Exam, Double> examScoreMap;
 
-    public List<StudentScore> getScores() {
-        return scores;
+    public Map<Exam, Double> getExamScoreMap() {
+        return examScoreMap;
     }
 
-    public void setScores(List<StudentScore> scores) {
-        this.scores = scores;
+    public void setExamScoreMap(Map<Exam, Double> examScoreMap) {
+        this.examScoreMap = examScoreMap;
     }
 }

@@ -6,7 +6,7 @@
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/homeStyle.css'/>">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
 </head>
 <body>
 <br>
@@ -21,6 +21,7 @@
 <br>
 <br>
 <form>
+    <h2 align="center" style="color: #579FB9 ;text-shadow: 1px 1px black">Online Exam</h2><br><br>
     <button type="button" onclick="document.location='/login'">Login</button>
     <br><br>
     <button type="button" onclick="document.location='/register'">Register</button>

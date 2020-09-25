@@ -1,8 +1,12 @@
 package onlineExamManagement.utility;
 
 import onlineExamManagement.model.dto.QuestionDto;
-import onlineExamManagement.model.entity.EssayQuestion;
-import onlineExamManagement.model.entity.Question;
+import onlineExamManagement.model.entity.*;
+import onlineExamManagement.model.enumeration.questionEnum.QuestionType;
+import onlineExamManagement.model.valueObject.QuestionVO;
+import onlineExamManagement.service.ClassificationService;
+import onlineExamManagement.service.ExamService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +18,6 @@ public class QuestionUtility {
         questionDto.setId(question.getId());
         questionDto.setClassification(question.getClassification());
         questionDto.setQuestionContent(question.getQuestionContent());
-        questionDto.setPoint(question.getPoint());
         questionDto.setQuestionType(question.getQuestionType());
         questionDto.setSubject(question.getSubject());
         return questionDto;
@@ -29,13 +32,21 @@ public class QuestionUtility {
         return questionDtoList;
     }
 
-    public EssayQuestion prepareEssayQuestion(Question question){
-        EssayQuestion essayQuestion = new EssayQuestion();
-        essayQuestion.setPoint(question.getPoint());
-        essayQuestion.setSubject(question .getSubject());
-        essayQuestion.setQuestionContent(question.getQuestionContent());
-        essayQuestion.setClassification(question.getClassification());
-        return essayQuestion;
+    public Object prepareQuestionFromQuestionVO(QuestionVO questionVO, QuestionType questionType) {
+        if (questionType.equals(QuestionType.EssayQuestion)) {
+            EssayQuestion essayQuestion = new EssayQuestion();
+            essayQuestion.setSubject(questionVO.getSubject());
+            essayQuestion.setQuestionContent(questionVO.getQuestionText());
+            essayQuestion.setQuestionType(questionType);
+            return essayQuestion;
+        } else if (questionType.equals(QuestionType.MultipleChoiceQuestion)) {
+            MultipleChoiceQuestion multipleChoiceQuestion = new MultipleChoiceQuestion();
+            multipleChoiceQuestion.setSubject(questionVO.getSubject());
+            multipleChoiceQuestion.setQuestionContent(questionVO.getQuestionText());
+            multipleChoiceQuestion.setQuestionType(questionType);
+            return multipleChoiceQuestion;
+        }
+        return null;
     }
 
 }

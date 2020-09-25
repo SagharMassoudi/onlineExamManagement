@@ -3,7 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/courseExamsStyle.css'/>">
@@ -11,13 +12,13 @@
 </head>
 <body>
 <div class="jumbotron text-center jumbotron-fluid"
-     style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1 id="header">EXAMS</h1>
+     style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1 id="header">Exams</h1>
 </div>
+<br><br><br>
 
 <table align="center">
     <tr>
-        <th>Id</th>
         <th>Subject</th>
         <th>From</th>
         <th>To</th>
@@ -35,10 +36,7 @@
             <input type="hidden" id="emailAddress" name="emailAddress"
                    value="${emailAddress}">
 
-            <td>
-                <input class="inputContainer" style="width: 30px;" name="id" id="id" value="${exam.id}"
-                       readonly="true"/>
-            </td>
+            <input name="id" id="id" value="${exam.id}" hidden/>
 
             <td>
                 <form:input class="inputContainer" path="subject" name="subject" id="subject"
@@ -80,10 +78,25 @@
             </td>
 
             <td>
-                <button type="submit">Edit Exam</button>
-                <button type="submit" formaction="/addQuestionToExam">Add Question</button>
-                <button type="submit" formaction="/cancelExam">Cancel Exam</button>
-                <button type="submit" formaction="/deleteExam">Delete Exam</button>
+                <button type="submit" title="Edit Exam">
+                    <i class="material-icons" style="font-size: 15px">edit</i>
+                </button>
+                <button type="submit" title="Add New Question To This Exam"
+                        formaction="/addQuestionToExam">
+                    <i class="material-icons" style="font-size: 15px">add</i>
+                </button>
+                <button type="submit" title="Cancel This Exam"
+                        formaction="/cancelExam">
+                    <i class="material-icons " style="font-size: 15px">cancel</i>
+                </button>
+                <button type="submit" title="Delete This Exam"
+                        formaction="/deleteExam">
+                    <i class="material-icons" style="font-size: 15px">delete</i>
+                </button>
+                <button type="submit" title="Results Of This Exam"
+                        formaction="/showExamResults">
+                    <i class="material-icons" style="font-size: 15px">playlist_add_check</i>
+                </button>
             </td>
         </form:form>
     </tr>

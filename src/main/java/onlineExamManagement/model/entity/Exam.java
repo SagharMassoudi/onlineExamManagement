@@ -6,7 +6,7 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.List;
+import java.util.Map;
 
 @Entity
 public class Exam {
@@ -16,19 +16,28 @@ public class Exam {
     private float totalScore;
     private String subject;
     private String moreInfo;
-    private Date startDate;
-    private Date endDate;
+    private java.sql.Date startDate;
+    private java.sql.Date endDate;
     private int duration;
     private ExamStatus status;
+
     @ManyToOne
     private Teacher examiner;
+
     @ManyToOne
     private Course course;
+
+    @ElementCollection
+    @MapKeyJoinColumn(name = "question_id")
+    @Column(name = "questionPoint")
     @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany
-    private List<Question> questions;
-    @OneToMany(mappedBy = "exam")
-    List<StudentScore> scores;
+    private Map<Question, Double> questionPointMap;
+
+    @ElementCollection
+    @MapKeyJoinColumn(name = "student_id")
+    @Column(name = "start_time")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private Map<Student, java.util.Date> studentDateMap;
 
     public Long getId() {
         return id;
@@ -57,7 +66,7 @@ public class Exam {
         this.subject = subject;
     }
 
-    public Date getStartDate() {
+    public java.sql.Date getStartDate() {
         return startDate;
     }
 
@@ -66,7 +75,7 @@ public class Exam {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public java.sql.Date getEndDate() {
         return endDate;
     }
 
@@ -120,20 +129,19 @@ public class Exam {
         this.course = course;
     }
 
-    public List<Question> getQuestions() {
-        return questions;
+    public Map<Question, Double> getQuestionPointMap() {
+        return questionPointMap;
     }
 
-    @Column(name = "questions")
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
+    public void setQuestionPointMap(Map<Question, Double> questionPointMap) {
+        this.questionPointMap = questionPointMap;
     }
 
-    public List<StudentScore> getScores() {
-        return scores;
+    public Map<Student, java.util.Date> getStudentDateMap() {
+        return studentDateMap;
     }
 
-    public void setScores(List<StudentScore> scores) {
-        this.scores = scores;
+    public void setStudentDateMap(Map<Student, java.util.Date> studentDateMap) {
+        this.studentDateMap = studentDateMap;
     }
 }

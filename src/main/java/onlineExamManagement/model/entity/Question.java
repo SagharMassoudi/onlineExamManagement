@@ -9,7 +9,6 @@ public class Question {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private float point;
     private String subject;
     private String questionContent;
     private QuestionType questionType;
@@ -41,15 +40,6 @@ public class Question {
     @Column(name = "questionContent", nullable = false)
     public void setQuestionContent(String questionContent) {
         this.questionContent = questionContent;
-    }
-
-    public float getPoint() {
-        return point;
-    }
-
-    @Column(name = "point", nullable = false)
-    public void setPoint(float point) {
-        this.point = point;
     }
 
     public QuestionType getQuestionType() {

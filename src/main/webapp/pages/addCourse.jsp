@@ -3,24 +3,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/newCourseStyle.css'/>">
     <title>Add New Course</title>
 </head>
 <body>
-<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>NEW<span> COURSE</span></h1>
-</div>
+<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>New Course</h1>
+</div><br><br><br>
 <form:form modelAttribute="course" action="addNewCourseProcess" method="post">
-    <label for="title">Enter The Title Of Course:</label>
+    <label for="title">Title:</label>
     <input class="inputContainer" path="title" id="title" type="text" name="title"
-           placeholder="Title" required>l
+           placeholder="Enter Title Of Course" required>
 
-    <label for="classificationTitle">Choose Classification</label><br>
+    <label for="classificationTitle">Classification:</label><br>
     <select class="inputContainer" id="classificationTitle" name="classificationTitle" required>
-        <option value="" disabled selected hidden>Classification</option>
+        <option value="" disabled selected hidden>Choose Classification!</option>
         <c:forEach items="${classifications}" var="classification">
             <option value="${classification.title}">${classification.title}</option>
         </c:forEach>

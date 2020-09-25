@@ -1,5 +1,8 @@
 package onlineExamManagement.model.entity;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -13,6 +16,7 @@ public class Course {
     private Classification classification;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<User> users;
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(mappedBy = "course")
     private List<Exam> exams;
 

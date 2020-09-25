@@ -5,7 +5,6 @@ import onlineExamManagement.model.enumeration.questionEnum.QuestionType;
 
 public class QuestionDto {
     private Long id;
-    private float point;
     private String subject;
     private String questionContent;
     private Classification classification;
@@ -17,14 +16,6 @@ public class QuestionDto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public float getPoint() {
-        return point;
-    }
-
-    public void setPoint(float point) {
-        this.point = point;
     }
 
     public String getSubject() {

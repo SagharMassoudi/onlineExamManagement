@@ -3,20 +3,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/addUserToCourseStyle.css'/>">
     <title>Add User To Course</title>
 </head>
 <body>
-<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>ADD<span> USER</span></h1>
-</div>
+<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>Add User</h1>
+</div><br><br><br>
 <form:form action="/addUserToCourseProcess" method="get">
-    <label for="userEmail">Choose User:</label><br>
+    <label for="userEmail">User:</label><br>
     <select class="inputContainer" id="userEmail" name="userEmail">
-        <option value="" disabled selected hidden>User</option>
+        <option value="" disabled selected hidden>Choose User!</option>
 
         <c:forEach items="${users}" var="user">
             <option value="${user.emailAddress}">${user.role}:${user.firstName}
@@ -24,9 +24,9 @@
         </c:forEach>
     </select>
 
-    <label for="courseTitle"> Choose Course:</label>
+    <label for="courseTitle">Course:</label>
     <select class="inputContainer" id="courseTitle" name="courseTitle">
-        <option value="" disabled selected hidden>Course</option>
+        <option value="" disabled selected hidden>Choose Course!</option>
 
         <c:forEach items="${courses}" var="course">
             <option value="${course.title}">${course.title}</option>

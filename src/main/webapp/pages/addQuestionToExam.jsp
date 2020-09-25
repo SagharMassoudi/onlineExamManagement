@@ -3,35 +3,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-<%--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"--%>
-<%--          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">--%>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/addQuestionToExamStyle.css'/>">
 
     <title>Add Question</title>
 </head>
 <body>
-<form:form class="qBank" method="get" action="/getClassificationQuestions">
-    <input type="hidden" name="classificationTitle" value="${classificationTitle}">
-    <input type="hidden" name="id" id="id" value="${examId}">
+<form:form class="qBank" modelAttribute="question" method="get" action="/getClassificationQuestions">
+        <input type="hidden" name="classificationTitle" value="${classificationTitle}">
+        <input type="hidden" name="id" id="id" value="${examId}">
     <label for="qBankBtn">Do You Want To Select Question Among Our Question Bank?
         Press The Button Below!</label><br>
     <button type="submit" id="qBankBtn">Question Bank</button>
 </form:form><br><br>
 <form:form class="newQuestion" method="get" modelAttribute="question" action="/addMultipleChoiceQuestionToExam">
 
-    <input name="classification" id="classification" value="${classificationTitle}" hidden>
-    <input name="examId" id="examId" value="${examId}" hidden>
+    <input name="classificationTitle" id="classificationTitle" value="${classificationTitle}" hidden/>
+    <input name="examId" id="examId" value="${examId}" hidden/>
 
-    <label for="questionText">Enter Question Content In The Box Blow:</label><br>
-    <form:textarea cssClass="inputContainer" path="questionContent" id="questionText" name="questionText" rows="7"
+    <label for="questionText">Question Content:</label><br>
+    <form:textarea cssClass="inputContainer" path="questionText" id="questionText" name="questionText" rows="7"
                    cols="100"
                    required="true"/><br><br>
 
-    <label for="subject">Enter Question Subject In The Box Blow:</label><br>
+    <label for="subject">Question Subject:</label><br>
     <form:input cssClass="inputContainer" path="subject" id="subject" name="subject" required="true"/><br><br>
 
-    <label for="point">Enter Question Point In The Box Below:</label><br>
+    <label for="point">Question Point:</label><br>
     <form:input cssClass="inputContainer" path="point" name="point" id="point" required="true"/><br><br>
 
     <p>Choose Type Of Your Question:</p>
@@ -47,10 +45,12 @@
            onclick="if(this.checked){showMultipleChoiceRelatedBox()}"/>
 
     <label id="correctAnswerLbl" for="correctAnswer" style="display: none"></label>
-    <input class="inputContainer" name="correctAnswer" id="correctAnswer" placeholder="Correct Answer" style="display: none">
+    <input class="inputContainer" name="correctAnswer" id="correctAnswer" placeholder="Correct Answer"
+           style="display: none">
 
     <div id="option">
-        <button type="button" id="optionBtn" name="optionBtn" onclick="addNewOption()" hidden>Add False Option</button><br><br>
+        <button type="button" id="optionBtn" name="optionBtn" onclick="addNewOption()" hidden>Add False Option</button>
+        <br><br>
     </div>
 
     <p>Do You Want To Add This Question To Our Question Bank?</p>

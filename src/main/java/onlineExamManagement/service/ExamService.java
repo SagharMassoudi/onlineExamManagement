@@ -1,11 +1,14 @@
 package onlineExamManagement.service;
 
+import onlineExamManagement.comparator.SortExamsById;
 import onlineExamManagement.model.dao.ExamDao;
 import onlineExamManagement.model.dto.ExamDto;
 import onlineExamManagement.model.entity.Course;
 import onlineExamManagement.model.entity.Exam;
-import onlineExamManagement.model.entity.StudentScore;
+import onlineExamManagement.model.entity.Question;
+import onlineExamManagement.model.entity.Student;
 import onlineExamManagement.model.enumeration.examEnum.ExamStatus;
+import onlineExamManagement.model.enumeration.questionEnum.QuestionType;
 import onlineExamManagement.utility.ExamUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,15 +16,25 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class ExamService {
     @Autowired
     ExamDao examDao;
+
     @Autowired
     CourseService courseService;
+    @Autowired
+    StudentService studentService;
+    @Autowired
+    StudentAnswerService studentAnswerService;
+    @Autowired
+    QuestionService questionService;
+
     ExamUtility examUtility = new ExamUtility();
 
 
@@ -103,24 +116,57 @@ public class ExamService {
         }
     }
 
-    public void calculateTotalScore(Exam exam, float point) {
+    public void calculateTotalScore(Exam exam, double point) {
         float totalScore = exam.getTotalScore();
         totalScore += point;
         exam.setTotalScore(totalScore);
     }
 
-    public List<ExamDto> getInProgressExams(List<StudentScore> studentScores, List<Exam> exams) {
-        Iterator<StudentScore> iterator = studentScores.iterator();
-        while (iterator.hasNext()) {
-            StudentScore studentScore = iterator.next();
-            long finishedExamId = studentScore.getExam().getId();
-            for (Exam exam : exams) {
-                long examId = exam.getId();
-                if (finishedExamId == examId || timeIsUp(exam)) {
-                    exams.remove(exam);
-                }
+    public List<ExamDto> getInProgressExams(Course course, String email) {
+        List<Exam> allExams = course.getExams();
+        List<Exam> finishedExams = extractFinishedExamsFromMap(email);
+        for (Exam finishedExam : finishedExams) {
+            Iterator<Exam> iterator = allExams.iterator();
+            while (iterator.hasNext()) {
+                Exam exam = iterator.next();
+                if (finishedExam.getId().equals(exam.getId()))
+                    allExams.remove(exam);
             }
         }
-        return examUtility.prepareExamDtoList(exams);
+        return examUtility.prepareExamDtoList(allExams);
+    }
+
+    public List<Exam> extractFinishedExamsFromMap(String email) {
+        Student student = studentService.findStudentByEmail(email);
+        Map<Exam, Double> examScoreMap = student.getExamScoreMap();
+        List<Exam> studentFinishedExams = new ArrayList<>(examScoreMap.keySet());
+        for (int i = 0; i < studentFinishedExams.size(); i++) {
+            studentFinishedExams.sort(new SortExamsById());
+        }
+        return studentFinishedExams;
+    }
+
+    public java.util.Date getExamStartTime(Student student, Exam exam) {
+        Map<Student, java.util.Date> studentDateMap = exam.getStudentDateMap();
+        java.util.Date date = null;
+        for (Map.Entry<Student, java.util.Date> entry : studentDateMap.entrySet()) {
+            Student key = entry.getKey();
+            if (key.getId().equals(student.getId())) {
+                date = entry.getValue();
+            }
+        }
+        return date;
+    }
+    public boolean examContainsEssayQuestions(long examId) {
+        Exam exam = findExamById(examId);
+        List<Question> questions = questionService.extractQuestionsFromMap(exam);
+        long counter = 0;
+        for (Question question : questions) {
+            if (question.getQuestionType().equals(QuestionType.EssayQuestion))
+                counter++;
+        }
+        if (counter == 0)
+            return false;
+        return true;
     }
 }

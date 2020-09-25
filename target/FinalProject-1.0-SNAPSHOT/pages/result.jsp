@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="jumbotron text-center jumbotron-fluid"
-     style="margin-bottom: 0; background-color: #221749 !important;">
+     style="margin-bottom: 0; background-color: #579FB9 !important;">
     <h1 id="header">Result</h1>
 </div>
 <h2>${message}</h2>

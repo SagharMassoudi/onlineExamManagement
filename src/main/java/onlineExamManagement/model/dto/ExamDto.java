@@ -1,12 +1,12 @@
 package onlineExamManagement.model.dto;
 
 import onlineExamManagement.model.entity.Course;
-import onlineExamManagement.model.entity.StudentScore;
+import onlineExamManagement.model.entity.Question;
 import onlineExamManagement.model.entity.Teacher;
 import onlineExamManagement.model.enumeration.examEnum.ExamStatus;
 
 import java.sql.Date;
-import java.util.List;
+import java.util.Map;
 
 public class ExamDto {
     private Long id;
@@ -19,7 +19,7 @@ public class ExamDto {
     private ExamStatus status;
     private Teacher examiner;
     private Course course;
-    List<StudentScore> scores;
+    private Map<Question,Double> questionPointMap;
 
 
     public Long getId() {
@@ -102,11 +102,11 @@ public class ExamDto {
         this.course = course;
     }
 
-    public List<StudentScore> getScores() {
-        return scores;
+    public Map<Question, Double> getQuestionPointMap() {
+        return questionPointMap;
     }
 
-    public void setScores(List<StudentScore> scores) {
-        this.scores = scores;
+    public void setQuestionPointMap(Map<Question, Double> questionPointMap) {
+        this.questionPointMap = questionPointMap;
     }
 }

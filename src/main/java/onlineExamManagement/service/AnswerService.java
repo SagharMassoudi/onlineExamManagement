@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -15,12 +16,11 @@ public class AnswerService {
     @Autowired
     AnswerDao answerDao;
 
-    public Answer addNewAnswer(String content, boolean correct) {
+    public Answer addNewAnswer(String content, boolean status) {
         Answer answer = new Answer();
         answer.setContent(content);
-        answer.setCorrect(correct);
-        answerDao.save(answer);
-        return answer;
+        answer.setCorrect(status);
+        return answerDao.save(answer);
     }
 
     public List<Answer> createQuestionAnswerList(String falseAnswers) {
@@ -33,11 +33,14 @@ public class AnswerService {
         return answers;
     }
 
-    public void setQuestionForAnswer(List<Answer> answers, MultipleChoiceQuestion mulQuestion){
+    public void setQuestionForAnswer(List<Answer> answers, MultipleChoiceQuestion mulQuestion) {
         for (Answer answer : answers) {
             answer.setQuestion(mulQuestion);
             answerDao.save(answer);
         }
     }
 
+    public void shuffleAnswers(MultipleChoiceQuestion question) {
+        Collections.shuffle(question.getAnswers());
+    }
 }

@@ -8,8 +8,8 @@ public class Answer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    private boolean correct;
-    @ManyToOne
+    private boolean isCorrect;
+    @ManyToOne(optional = true)
     private MultipleChoiceQuestion question;
 
     public Long getId() {
@@ -29,11 +29,11 @@ public class Answer {
     }
 
     public boolean isCorrect() {
-        return correct;
+        return isCorrect;
     }
 
     public void setCorrect(boolean correct) {
-        this.correct = correct;
+        this.isCorrect = correct;
     }
 
     public MultipleChoiceQuestion getQuestion() {

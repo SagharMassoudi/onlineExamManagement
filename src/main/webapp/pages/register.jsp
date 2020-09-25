@@ -3,13 +3,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/registerStyle.css'/>">
     <title>Register</title>
 </head>
 <body>
 <form:form cssClass="myForm" modelAttribute="user" action="registerProcess" method="post">
-    <h2>Register</h2>
+    <h1>Register</h1>
     <label for="firstName">Enter Your First Name:</label><br>
     <input class="inputContainer" path="firstName" id="firstName" type="text" name="firstName"
            placeholder="First Name"

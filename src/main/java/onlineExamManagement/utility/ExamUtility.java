@@ -1,12 +1,9 @@
 package onlineExamManagement.utility;
 
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
 import onlineExamManagement.model.dto.ExamDto;
-import onlineExamManagement.model.dto.UserDto;
-import onlineExamManagement.model.entity.*;
+import onlineExamManagement.model.entity.Exam;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ExamUtility {

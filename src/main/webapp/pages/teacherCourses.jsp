@@ -3,7 +3,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/teacherCoursesStyle.css'/>">
@@ -11,13 +12,12 @@
 </head>
 <body>
 <div class="jumbotron text-center jumbotron-fluid"
-     style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>COURSES</h1>
-</div>
+     style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>Courses</h1>
+</div><br><br><br>
 
 <table align="center">
     <tr>
-        <th>Id</th>
         <th>Title</th>
         <th>Classification</th>
         <th>Actions</th>
@@ -37,8 +37,13 @@
                 </td>
 
                 <td>
-                    <button type="submit">See Exams</button>
-                    <button type="submit" formaction="/addNewExamToCourse">Add Exam</button>
+                    <button type="submit" title="See Exams Of Current Course">
+                        <i class="material-icons" style="font-size: 15px">visibility</i>
+                    </button>
+                    <button type="submit" title="Add New Exam To This Course"
+                            formaction="/addNewExamToCourse">
+                        <i class="material-icons" style="font-size: 15px">add</i>
+                    </button>
                 </td>
             </form:form>
         </tr>

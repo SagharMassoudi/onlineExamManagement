@@ -3,23 +3,24 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/newClassificationStyle.css'/>">
     <title>Add New Classification</title>
 </head>
 <body>
-<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>NEW<span> CLASSIFICATION</span></h1>
-</div>
+<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>New Classification</h1>
+</div><br><br><br>
 
 <form:form action="addNewClassificationProcess" method="post" modelAttribute="classification">
 
-    <label for="title">Enter The Title Of Classification</label>
-    <input class="inputContainer" type="text" placeholder="Title" path="title" id="title" name="title" required>
+    <label for="title">Title:</label>
+    <input class="inputContainer" type="text" placeholder="Enter The Title Of Classification" path="title" id="title" name="title" required>
 
-    <button type="submit">Save</button>
+    <button type="submit" title="Save" >Save</button>
 </form:form>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

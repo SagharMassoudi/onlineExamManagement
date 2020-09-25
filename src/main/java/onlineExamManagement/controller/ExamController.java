@@ -5,7 +5,7 @@ import onlineExamManagement.model.entity.*;
 import onlineExamManagement.model.enumeration.examEnum.ExamStatus;
 import onlineExamManagement.service.CourseService;
 import onlineExamManagement.service.ExamService;
-import onlineExamManagement.service.StudentScoreService;
+import onlineExamManagement.service.StudentService;
 import onlineExamManagement.service.UserService;
 import onlineExamManagement.utility.ExamUtility;
 import onlineExamManagement.utility.UserUtility;
@@ -21,24 +21,24 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ExamController {
     public ExamService examService;
     public CourseService courseService;
     public UserService userService;
-    public StudentScoreService studentScoreService;
+    public StudentService studentService;
     UserUtility userUtility = new UserUtility();
     ExamUtility examUtility = new ExamUtility();
 
     @Autowired
     public ExamController(ExamService examService, CourseService courseService,
-                          UserService userService,
-                          StudentScoreService studentScoreService) {
+                          UserService userService, StudentService studentService) {
         this.examService = examService;
         this.courseService = courseService;
         this.userService = userService;
-        this.studentScoreService = studentScoreService;
+        this.studentService = studentService;
     }
 
     @RequestMapping(value = "/addNewExamToCourse", method = RequestMethod.GET)
@@ -78,22 +78,22 @@ public class ExamController {
         String email = request.getParameter("emailAddress");
         Course course = courseService.findCourseByTitle(title);
         List<Exam> examList = examService.getCourseExams(course);
-        List<StudentScore> finishedExams = studentScoreService.getStudentFinishedExam(email);
         ModelAndView mav = null;
         switch (requestedValue) {
             case "/showCourseExams":
                 List<ExamDto> examDtoList = examUtility.prepareExamDtoList(examList);
-                mav = new ModelAndView("courseExams");
+                mav = new ModelAndView("teacherExams");
                 mav.addObject("emailAddress", email);
                 mav.addObject("exams", examDtoList);
                 mav.addObject("exam", new ExamDto());
                 break;
             case "/showStudentFinishedExams":
                 mav = new ModelAndView("studentFinishedExams");
-                mav.addObject("finishedExams", finishedExams);
+                Map<Exam, Double> examScoreMap = studentService.getStudentFinishedExams(email);
+                mav.addObject("examScoreMap", examScoreMap);
                 break;
             case "/showInProgressExams":
-                List<ExamDto> inProgressExams = examService.getInProgressExams(finishedExams, examList);
+                List<ExamDto> inProgressExams = examService.getInProgressExams(course, email);
                 mav = new ModelAndView("inProgressExams");
                 mav.addObject("emailAddress", email);
                 mav.addObject("exams", inProgressExams);

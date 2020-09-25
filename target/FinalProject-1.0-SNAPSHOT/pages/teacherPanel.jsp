@@ -4,20 +4,26 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel='stylesheet' href="<c:url value='/resources/theme/css/teacherStyle.css'/>">
     <title>Teacher Panel</title>
 </head>
 <body>
-<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #221749 !important;">
-    <h1>TEACHER<span> PANEL</span></h1>
+<div class="jumbotron text-center jumbotron-fluid" style="margin-bottom: 0; background-color: #579FB9 !important;">
+    <h1>Teacher Panel</h1>
 </div>
-
+<br>
+<br>
+<br>
 <form:form method="get" action="/showUserCourses">
-    <h3>${message}</h3>
-    <label for="btn">Click Button To See Your Courses</label>
+    <h3>${message}</h3><br><br>
     <input type="hidden" id="emailAddress" name="emailAddress" value="${emailAddress}">
-    <button id="btn" type="submit">My Courses</button>
+    <button id="btn" type="submit">
+        My Courses
+        <i class="material-icons">menu_book</i>
+    </button>
 </form:form>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

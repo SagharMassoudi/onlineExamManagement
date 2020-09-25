@@ -1,31 +1,31 @@
 * {
     box-sizing: border-box;
-    font-family: 'Fredoka One', cursive;
+    font-family: 'Nanum Myeongjo', serif;
 }
 
 body {
     text-align: center;
     height: 100%;
-    background-image: url("img/lightBlue.jpg") !important;
+    background-image: url("img/blueFlowers.jpg") !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
 }
 
 form {
-    border-radius: 10px;
-    border: 3px solid #145DA0;
+    border-radius: 8px;
+    border: medium solid #579FB9;
     padding: 25px;
-    height: 140px;
-    width: 240px;
+    height: 240px;
+    width: 300px;
     margin: auto !important;
     justify-content: center;
 }
 
 button {
-    border-radius: 8px !important;
+    border-radius: 6px !important;
     width: 100%;
-    background-color: #145DA0 !important;
+    background-color: #579FB9 !important;
     color: white;
     opacity: 100%;
 }
